@@ -7,7 +7,7 @@ username = "user" #@param {type:"string"}
 password = "root" #@param {type:"string"}
 os.system(f"useradd -m {username}")
 os.system(f"adduser {username} sudo")
-os.system(f"echo '{username}:{password}' | sudo chpasswd")
+os.system(f"echo '{username}:{password}' |  chpasswd")
 os.system("sed -i 's/\/bin\/sh/\/bin\/bash/g' /etc/passwd")
 
 Pin = 123456 #@param {type: "integer"}
@@ -38,8 +38,8 @@ class CRDSetup:
         os.system("bash -c 'echo \"exec /etc/X11/Xsession /usr/bin/xfce4-session\" > /etc/chrome-remote-desktop-session'")
         os.system("apt remove --assume-yes gnome-terminal")
         os.system("apt install --assume-yes xscreensaver")
-        os.system("sudo service lightdm stop")
-        os.system("sudo apt-get install dbus-x11 -y")
+        os.system("service lightdm stop")
+        os.system("apt-get install dbus-x11 -y")
         os.system("service dbus start")
         print("Installed XFCE4 Desktop Environment !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
